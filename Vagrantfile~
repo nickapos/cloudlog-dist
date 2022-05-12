@@ -1,0 +1,31 @@
+# -*- mode: ruby -*-"
+# vi: set ft=ruby :
+
+box_type= "ubuntu/focal64"
+
+Vagrant.configure("2") do |config|
+  config.vm.box = "#{box_type}"
+  config.vm.network "public_network", bridge: 'wlp0s20f3'
+  config.vm.provider "virtualbox" do |v|
+    v.memory = 2048
+    v.cpus = 1
+  end
+
+
+  # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  # Add packages
+  # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  config.vm.provision "shell", 
+                      inline: "sudo apt-get update && sudo apt-get -y upgrade" 
+
+  # install piehole
+  #config.vm.provision "shell", 
+  #                    inline: "mkdir -p /etc/pihole && touch /etc/pihole/setupVars.conf && curl -sSL https://install.pi-hole.net | bash /dev/stdin --unattended"
+  
+  # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  # setup nfs
+  # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  #config.vm.provision "shell", 
+  #                    inline: 'sudo bash /vagrant/prepare-nfs.sh '  
+
+end
