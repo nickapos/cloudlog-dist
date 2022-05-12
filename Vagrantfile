@@ -26,24 +26,24 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", 
                       inline: "id -u cloudlog &>/dev/null || sudo useradd -m -s /bin/bash cloudlog"
   config.vm.provision "shell", 
-                      inline: " [[ -d /var/www/html ]] && cd /var/www/html; git pull || git clone https://github.com/magicbug/Cloudlog.git /var/www/html"
+                      inline: " [[ -d /var/www/html/cloudlog ]] && cd /var/www/html/cloudlog; git pull || git clone https://github.com/magicbug/Cloudlog.git /var/www/html/cloudlog"
 
   # set ownership
   config.vm.provision "shell", 
-                      inline: "sudo chown -R root:www-data /var/www/html/application/config/ &&
-                      sudo chown -R root:www-data /var/www/html/assets/qslcard/ &&
-                      sudo chown -R root:www-data /var/www/html/backup/ &&
-                      sudo chown -R root:www-data /var/www/html/updates/ &&
-                      sudo chown -R root:www-data /var/www/html/uploads/ &&
-                      sudo chown -R root:www-data /var/www/html/images/eqsl_card_images/"
+                      inline: "sudo chown -R root:www-data /var/www/html/cloudlog/application/config/ &&
+                      sudo chown -R root:www-data /var/www/html/cloudlog/assets/qslcard/ &&
+                      sudo chown -R root:www-data /var/www/html/cloudlog/backup/ &&
+                      sudo chown -R root:www-data /var/www/html/cloudlog/updates/ &&
+                      sudo chown -R root:www-data /var/www/html/cloudlog/uploads/ &&
+                      sudo chown -R root:www-data /var/www/html/cloudlog/images/eqsl_card_images/"
   # set ownership
   config.vm.provision "shell", 
-                      inline: "sudo chmod -R g+rw /var/www/html/application/config/ &&
-                      sudo chmod -R g+rw /var/www/html/assets/qslcard/&&
-                      sudo chmod -R g+rw /var/www/html/backup/&&
-                      sudo chmod -R g+rw /var/www/html/updates/&&
-                      sudo chmod -R g+rw /var/www/html/uploads/&&
-                      sudo chmod -R g+rw /var/www/html/images/eqsl_card_images/"
+                      inline: "sudo chmod -R g+rw /var/www/html/cloudlog/application/config/ &&
+                      sudo chmod -R g+rw /var/www/html/cloudlog/assets/qslcard/&&
+                      sudo chmod -R g+rw /var/www/html/cloudlog/backup/&&
+                      sudo chmod -R g+rw /var/www/html/cloudlog/updates/&&
+                      sudo chmod -R g+rw /var/www/html/cloudlog/uploads/&&
+                      sudo chmod -R g+rw /var/www/html/cloudlog/images/eqsl_card_images/"
   # create db
   config.vm.provision "shell", 
                       inline: 'sudo mysql -u root -ps3kr1t < /vagrant/create-db || echo "DB already exists/"' 
