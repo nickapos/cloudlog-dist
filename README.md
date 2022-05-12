@@ -1,5 +1,5 @@
 # cloudlog-dist
-A little vagrant project for cloudlog deployment automation
+A little vagrant project for cloudlog deployment automation. This project will create a debian stable vm and deploy cloudlog and all its dependencies in it. After that the user can use the installer to configure and start using the service. 
 
 ## Depencencies
 
