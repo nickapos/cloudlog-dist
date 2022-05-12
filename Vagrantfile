@@ -24,13 +24,21 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", 
                       inline: " [[ -d /home/cloudlog/cloudlog-dist ]] && cd /home/cloudlog/cloudlog-dist; git pull || git clone https://github.com/magicbug/Cloudlog.git /home/cloudlog/cloudlog-dist"
 
-  # set permissions
+  # set ownership
   config.vm.provision "shell", 
                       inline: "sudo chown -R root:www-data /home/cloudlog/cloudlog-dist/application/config/ &&
                       sudo chown -R root:www-data /home/cloudlog/cloudlog-dist/assets/qslcard/ &&
                       sudo chown -R root:www-data /home/cloudlog/cloudlog-dist/backup/ &&
                       sudo chown -R root:www-data /home/cloudlog/cloudlog-dist/updates/ &&
                       sudo chown -R root:www-data /home/cloudlog/cloudlog-dist/uploads/ &&
-                      sudo chown -R root:www-data /home/cloudlog/cloudlog-dist/images/eqsl_card_images/" 
+                      sudo chown -R root:www-data /home/cloudlog/cloudlog-dist/images/eqsl_card_images/"
+  # set ownership
+  config.vm.provision "shell", 
+                      inline: "sudo chmod -R g+rw /home/cloudlog/cloudlog-dist/application/config/ &&
+                      sudo chmod -R g+rw /home/cloudlog/cloudlog-dist/assets/qslcard/&&
+                      sudo chmod -R g+rw /home/cloudlog/cloudlog-dist/backup/&&
+                      sudo chmod -R g+rw /home/cloudlog/cloudlog-dist/updates/&&
+                      sudo chmod -R g+rw /home/cloudlog/cloudlog-dist/uploads/&&
+                      sudo chmod -R g+rw /home/cloudlog/cloudlog-dist/images/eqsl_card_images/" 
 
 end
