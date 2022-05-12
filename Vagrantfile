@@ -19,32 +19,33 @@ Vagrant.configure("2") do |config|
                       inline: "sudo apt-get update && sudo apt-get -y upgrade && sudo apt-get -y install php7.4 php7.4-curl php7.4-mysql php7.4-mbstring php7.4-xml git"
   # install mariadb
   config.vm.provision "shell", 
-                      inline: "sudo /bin/bash /vagrant/mariadb-install"
+                      inline: "sudo /bin/bash /vagrant/mariadb-install && sudo cp /vagrant/100-maria-client.conf /etc/mysql/mariadb.conf.d/ "
+  
 
   # create user and directories
   config.vm.provision "shell", 
                       inline: "id -u cloudlog &>/dev/null || sudo useradd -m -s /bin/bash cloudlog"
   config.vm.provision "shell", 
-                      inline: " [[ -d /home/cloudlog/cloudlog-dist ]] && cd /home/cloudlog/cloudlog-dist; git pull || git clone https://github.com/magicbug/Cloudlog.git /home/cloudlog/cloudlog-dist"
+                      inline: " [[ -d /var/www/html ]] && cd /var/www/html; git pull || git clone https://github.com/magicbug/Cloudlog.git /var/www/html"
 
   # set ownership
   config.vm.provision "shell", 
-                      inline: "sudo chown -R root:www-data /home/cloudlog/cloudlog-dist/application/config/ &&
-                      sudo chown -R root:www-data /home/cloudlog/cloudlog-dist/assets/qslcard/ &&
-                      sudo chown -R root:www-data /home/cloudlog/cloudlog-dist/backup/ &&
-                      sudo chown -R root:www-data /home/cloudlog/cloudlog-dist/updates/ &&
-                      sudo chown -R root:www-data /home/cloudlog/cloudlog-dist/uploads/ &&
-                      sudo chown -R root:www-data /home/cloudlog/cloudlog-dist/images/eqsl_card_images/"
+                      inline: "sudo chown -R root:www-data /var/www/html/application/config/ &&
+                      sudo chown -R root:www-data /var/www/html/assets/qslcard/ &&
+                      sudo chown -R root:www-data /var/www/html/backup/ &&
+                      sudo chown -R root:www-data /var/www/html/updates/ &&
+                      sudo chown -R root:www-data /var/www/html/uploads/ &&
+                      sudo chown -R root:www-data /var/www/html/images/eqsl_card_images/"
   # set ownership
   config.vm.provision "shell", 
-                      inline: "sudo chmod -R g+rw /home/cloudlog/cloudlog-dist/application/config/ &&
-                      sudo chmod -R g+rw /home/cloudlog/cloudlog-dist/assets/qslcard/&&
-                      sudo chmod -R g+rw /home/cloudlog/cloudlog-dist/backup/&&
-                      sudo chmod -R g+rw /home/cloudlog/cloudlog-dist/updates/&&
-                      sudo chmod -R g+rw /home/cloudlog/cloudlog-dist/uploads/&&
-                      sudo chmod -R g+rw /home/cloudlog/cloudlog-dist/images/eqsl_card_images/"
+                      inline: "sudo chmod -R g+rw /var/www/html/application/config/ &&
+                      sudo chmod -R g+rw /var/www/html/assets/qslcard/&&
+                      sudo chmod -R g+rw /var/www/html/backup/&&
+                      sudo chmod -R g+rw /var/www/html/updates/&&
+                      sudo chmod -R g+rw /var/www/html/uploads/&&
+                      sudo chmod -R g+rw /var/www/html/images/eqsl_card_images/"
   # create db
   config.vm.provision "shell", 
-                      inline: 'sudo mysql -u root -p < /vagrant/create-db' 
+                      inline: 'sudo mysql -u root -ps3kr1t < /vagrant/create-db || echo "DB already exists/"' 
 
 end
