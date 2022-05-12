@@ -26,11 +26,11 @@ Vagrant.configure("2") do |config|
 
   # set permissions
   config.vm.provision "shell", 
-                      inline: "sudo chown -R root:www-data /home/cloudlog/cloudlog-dist/application/config/\
-                      sudo chown -R root:www-data /home/cloudlog/cloudlog-dist/assets/qslcard/\
-                      sudo chown -R root:www-data /home/cloudlog/cloudlog-dist/backup/\
-                      sudo chown -R root:www-data /home/cloudlog/cloudlog-dist/updates/\
-                      sudo chown -R root:www-data /home/cloudlog/cloudlog-dist/uploads/\
+                      inline: "sudo chown -R root:www-data /home/cloudlog/cloudlog-dist/application/config/ &&
+                      sudo chown -R root:www-data /home/cloudlog/cloudlog-dist/assets/qslcard/ &&
+                      sudo chown -R root:www-data /home/cloudlog/cloudlog-dist/backup/ &&
+                      sudo chown -R root:www-data /home/cloudlog/cloudlog-dist/updates/ &&
+                      sudo chown -R root:www-data /home/cloudlog/cloudlog-dist/uploads/ &&
                       sudo chown -R root:www-data /home/cloudlog/cloudlog-dist/images/eqsl_card_images/" 
 
 end
