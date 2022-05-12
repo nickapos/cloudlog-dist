@@ -19,7 +19,7 @@ Vagrant.configure("2") do |config|
                       inline: "sudo apt-get update && sudo apt-get -y upgrade && sudo apt-get -y install php7.4 php7.4-curl php7.4-mysql php7.4-mbstring php7.4-xml git"
   # install mariadb
   config.vm.provision "shell", 
-                      inline: "sudo /bin/bash /vagrant/mariadb-install && sudo cp /vagrant/100-maria-client.conf /etc/mysql/mariadb.conf.d/ "
+                      inline: "sudo /bin/bash /vagrant/mariadb-install  "
   
 
   # create user and directories
