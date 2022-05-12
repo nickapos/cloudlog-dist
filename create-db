@@ -1,0 +1,4 @@
+CREATE DATABASE db_name;
+CREATE USER 'user1'@localhost IDENTIFIED BY 'password1';
+GRANT ALL PRIVILEGES ON db_name.* TO 'user1'@'localhost';
+QUIT

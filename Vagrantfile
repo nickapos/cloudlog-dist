@@ -16,7 +16,7 @@ Vagrant.configure("2") do |config|
   # Add packages
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   config.vm.provision "shell", 
-                      inline: "sudo apt-get update && sudo apt-get -y upgrade && sudo apt-get -y install php7.4 php7.4-curl php7.4-mysql php7.4-mbstring php7.4-xml git"
+                      inline: "sudo apt-get update && sudo apt-get -y upgrade && sudo apt-get -y install php7.4 php7.4-curl php7.4-mysql php7.4-mbstring php7.4-xml git mariadb-server"
 
   # create user and directories
   config.vm.provision "shell", 
@@ -39,6 +39,9 @@ Vagrant.configure("2") do |config|
                       sudo chmod -R g+rw /home/cloudlog/cloudlog-dist/backup/&&
                       sudo chmod -R g+rw /home/cloudlog/cloudlog-dist/updates/&&
                       sudo chmod -R g+rw /home/cloudlog/cloudlog-dist/uploads/&&
-                      sudo chmod -R g+rw /home/cloudlog/cloudlog-dist/images/eqsl_card_images/" 
+                      sudo chmod -R g+rw /home/cloudlog/cloudlog-dist/images/eqsl_card_images/"
+  # create db
+  config.vm.provision "shell", 
+                      inline: 'sudo mysql -u root -p < /vagrant/create-db' 
 
 end
