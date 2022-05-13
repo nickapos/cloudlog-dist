@@ -14,7 +14,7 @@ mariastatus=$?
 if [ $mariastatus -eq 0 ] ; then
      docker start mariadbtest
 else
-	docker run --name mariadbtest -v mariadb-vol:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=s3kr1t -e MYSQL_ROOT_HOST=% --net=host -p 3306:3306 -d mariadb:10.5
+	docker run --name mariadbtest -v mariadb-vol:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=s3kr1t --net=host -p 3306:3306 -d mariadb:10.5
 fi
 echo "Creating cloudlog db"
-#mysql -uroot -ps3kr1t -h 127.0.0.1 --protocol=TCP -P 3306 < create-db 
+mysql -uroot -ps3kr1t -h 127.0.0.1 --protocol=TCP -P 3306 < create-db 
