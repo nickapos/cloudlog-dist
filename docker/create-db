@@ -1,4 +1,4 @@
 CREATE DATABASE IF NOT EXISTS db_name;
-CREATE USER IF NOT EXISTS 'user1'@localhost IDENTIFIED BY 'password1';
-GRANT ALL PRIVILEGES ON db_name.* TO 'user1'@'localhost';
+CREATE USER IF NOT EXISTS 'user1'@'%' IDENTIFIED BY 'password1';
+GRANT ALL PRIVILEGES ON db_name.* TO 'user1'@'%';
 QUIT
