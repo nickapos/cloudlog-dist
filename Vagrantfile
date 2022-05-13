@@ -19,7 +19,7 @@ Vagrant.configure("2") do |config|
                       inline: "sudo apt-get update && sudo apt-get -y upgrade && sudo apt-get -y install php7.4 php7.4-curl php7.4-mysql php7.4-mbstring php7.4-xml git"
   # install mariadb
   config.vm.provision "shell", 
-                      inline: "sudo /bin/bash /vagrant/docker/mariadb-install  "
+                      inline: "sudo /bin/bash /vagrant/mariadb-install  "
   
 
   # create cloudlog dir and clone cloudlog
@@ -34,6 +34,6 @@ Vagrant.configure("2") do |config|
                       inline: "sudo /bin/bash /vagrant/docker/set-permissions"
   # create db
   config.vm.provision "shell", 
-                      inline: 'sudo mysql -u root -ps3kr1t < /vagrant/create-db || echo "DB already exists/"' 
+                      inline: 'sudo mysql -u root -ps3kr1t < /vagrant/docker/create-db' 
 
 end
