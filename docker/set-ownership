@@ -1,0 +1,7 @@
+#!/bin/bash
+sudo chown -R root:www-data /var/www/html/cloudlog/application/config/
+sudo chown -R root:www-data /var/www/html/cloudlog/assets/qslcard/
+sudo chown -R root:www-data /var/www/html/cloudlog/backup/
+sudo chown -R root:www-data /var/www/html/cloudlog/updates/
+sudo chown -R root:www-data /var/www/html/cloudlog/uploads/
+sudo chown -R root:www-data /var/www/html/cloudlog/images/eqsl_card_images/
