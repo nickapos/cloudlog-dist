@@ -22,9 +22,7 @@ Vagrant.configure("2") do |config|
                       inline: "sudo /bin/bash /vagrant/mariadb-install  "
   
 
-  # create user and directories
-  config.vm.provision "shell", 
-                      inline: "id -u cloudlog &>/dev/null || sudo useradd -m -s /bin/bash cloudlog"
+  # create cloudlog dir and clone cloudlog
   config.vm.provision "shell", 
                       inline: " [[ -d /var/www/html/cloudlog ]] && cd /var/www/html/cloudlog; git pull || git clone https://github.com/magicbug/Cloudlog.git /var/www/html/cloudlog"
 
